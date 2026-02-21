@@ -1,26 +1,21 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>张三 - 个人学术主页</title>
-    <meta name="description" content="张三的个人学术网站 - 研究成果与资源分享">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Serif+SC:wght@400;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <title>Zhengzhou Institute of Surveying and Mapping</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-text: #1F2937;
-            --secondary-text: #4B5563;
-            --accent: #0369A1;
-            --accent-hover: #0EA5E9;
-            --bg-main: #FAFAFA;
-            --bg-card: #FFFFFF;
-            --border: #E5E7EB;
-            --shadow: 0 1px 3px rgba(0,0,0,0.1);
-            --shadow-hover: 0 4px 12px rgba(0,0,0,0.15);
-            --radius: 8px;
-            --transition: 0.3s ease;
+            --primary: #1a365d;
+            --secondary: #2c5282;
+            --accent: #e53e3e;
+            --bg-light: #f7fafc;
+            --text-dark: #2d3748;
+            --text-light: #718096;
+            --white: #ffffff;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            --shadow-hover: 0 8px 30px rgba(0, 0, 0, 0.12);
         }
 
         * {
@@ -29,125 +24,179 @@
             box-sizing: border-box;
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
-
         body {
-            font-family: 'Inter', 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
-            color: var(--primary-text);
-            background: var(--bg-main);
+            font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text-dark);
+            background: var(--bg-light);
             line-height: 1.7;
-            font-size: 16px;
         }
 
         /* Navigation */
-        .navbar {
+        nav {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
-            background: var(--bg-card);
-            border-bottom: 1px solid var(--border);
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
             z-index: 1000;
-            padding: 0 1.5rem;
+            padding: 0 2rem;
         }
 
         .nav-container {
-            max-width: 900px;
+            max-width: 1200px;
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            height: 60px;
+            height: 80px;
         }
 
-        .nav-logo {
-            font-family: 'Noto Serif SC', serif;
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: var(--primary-text);
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
             text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .logo-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--primary);
+            line-height: 1.3;
+        }
+
+        .logo-text span {
+            display: block;
+            font-size: 0.75rem;
+            font-weight: 400;
+            color: var(--text-light);
+            font-family: 'Source Sans Pro', sans-serif;
         }
 
         .nav-links {
             display: flex;
-            gap: 2rem;
+            gap: 2.5rem;
             list-style: none;
         }
 
         .nav-links a {
-            color: var(--secondary-text);
             text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 600;
             font-size: 0.95rem;
-            transition: color var(--transition);
             position: relative;
+            padding: 0.5rem 0;
+            transition: color 0.3s;
         }
 
         .nav-links a::after {
             content: '';
             position: absolute;
-            bottom: -4px;
+            bottom: 0;
             left: 0;
             width: 0;
             height: 2px;
             background: var(--accent);
-            transition: width var(--transition);
+            transition: width 0.3s;
         }
 
         .nav-links a:hover {
-            color: var(--accent);
+            color: var(--primary);
         }
 
         .nav-links a:hover::after {
             width: 100%;
         }
 
-        .menu-toggle {
-            display: none;
-            flex-direction: column;
-            gap: 5px;
-            cursor: pointer;
-            padding: 5px;
+        .nav-links a.active {
+            color: var(--primary);
         }
 
-        .menu-toggle span {
-            width: 24px;
-            height: 2px;
-            background: var(--primary-text);
-            transition: var(--transition);
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 6rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
         }
 
         /* Main Content */
         main {
-            max-width: 900px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 80px 1.5rem 2rem;
+            padding: 4rem 2rem;
         }
 
+        /* Section Styles */
         section {
             margin-bottom: 4rem;
         }
 
-        h1 {
-            font-family: 'Noto Serif SC', serif;
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            color: var(--primary-text);
-        }
-
-        h2 {
-            font-family: 'Noto Serif SC', serif;
-            font-size: 1.75rem;
-            font-weight: 600;
-            margin-bottom: 1.5rem;
-            color: var(--primary-text);
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 2rem;
             position: relative;
-            padding-bottom: 0.75rem;
+            padding-bottom: 1rem;
         }
 
-        h2::after {
+        .section-title::after {
             content: '';
             position: absolute;
             bottom: 0;
@@ -155,771 +204,354 @@
             width: 60px;
             height: 3px;
             background: var(--accent);
-            border-radius: 2px;
         }
 
-        h3 {
-            font-family: 'Noto Serif SC', serif;
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
+        /* About Section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
         }
 
-        /* Hero Section */
-        .hero {
-            display: flex;
-            gap: 2.5rem;
-            align-items: flex-start;
-            padding: 2rem 0;
+        .about-text p {
+            margin-bottom: 1.5rem;
+            color: var(--text-dark);
+            font-size: 1.05rem;
         }
 
-        .hero-avatar {
-            flex-shrink: 0;
-            width: 200px;
-            height: 200px;
-            border-radius: var(--radius);
-            background: linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%);
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .stat-card {
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            display: block;
+        }
+
+        .stat-label {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        /* Research Areas */
+        .research-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .research-card {
+            background: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .research-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .research-icon {
+            height: 140px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 4rem;
-            color: var(--accent);
-            overflow: hidden;
-        }
-
-        .hero-avatar img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .hero-content {
-            flex: 1;
-        }
-
-        .hero-title {
-            margin-bottom: 0.25rem;
-        }
-
-        .hero-subtitle {
-            color: var(--secondary-text);
-            font-size: 1.1rem;
-            margin-bottom: 1rem;
-        }
-
-        .hero-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 1.25rem;
-        }
-
-        .tag {
-            background: #EFF6FF;
-            color: var(--accent);
-            padding: 0.25rem 0.75rem;
-            border-radius: 20px;
-            font-size: 0.85rem;
-        }
-
-        .hero-bio {
-            color: var(--secondary-text);
-            margin-bottom: 1.5rem;
-            line-height: 1.8;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.75rem 1.5rem;
-            border-radius: var(--radius);
-            text-decoration: none;
-            font-size: 0.95rem;
-            font-weight: 500;
-            transition: all var(--transition);
-            cursor: pointer;
-            border: none;
-        }
-
-        .btn-primary {
-            background: var(--accent);
             color: white;
         }
 
-        .btn-primary:hover {
-            background: var(--accent-hover);
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-hover);
+        .research-icon.space {
+            background: linear-gradient(135deg, #1a365d, #2c5282);
         }
 
-        .btn-outline {
-            background: transparent;
-            border: 2px solid var(--accent);
-            color: var(--accent);
+        .research-icon.vlbi {
+            background: linear-gradient(135deg, #553c9a, #805ad5);
         }
 
-        .btn-outline:hover {
-            background: var(--accent);
-            color: white;
+        .research-icon.reference {
+            background: linear-gradient(135deg, #c05621, #dd6b20);
         }
 
-        /* Publications */
-        .publication-list {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
-
-        .publication-item {
-            background: var(--bg-card);
+        .research-content {
             padding: 1.5rem;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            transition: all var(--transition);
         }
 
-        .publication-item:hover {
-            box-shadow: var(--shadow-hover);
-            transform: translateY(-2px);
+        .research-content h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            color: var(--primary);
+            margin-bottom: 0.75rem;
         }
 
-        .pub-title {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--primary-text);
-            margin-bottom: 0.5rem;
-            text-decoration: none;
-            transition: color var(--transition);
-        }
-
-        .pub-title:hover {
-            color: var(--accent);
-        }
-
-        .pub-authors {
-            color: var(--secondary-text);
+        .research-content p {
+            color: var(--text-light);
             font-size: 0.95rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .pub-authors strong {
-            color: var(--primary-text);
-            font-weight: 600;
-        }
-
-        .pub-venue {
-            font-style: italic;
-            color: var(--secondary-text);
-            font-size: 0.9rem;
             margin-bottom: 1rem;
         }
 
-        .pub-links {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-
-        .pub-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.35rem;
-            padding: 0.35rem 0.75rem;
-            background: #F3F4F6;
+        .research-link {
             color: var(--accent);
             text-decoration: none;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 500;
-            transition: all var(--transition);
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: gap 0.3s;
         }
 
-        .pub-link:hover {
-            background: var(--accent);
-            color: white;
+        .research-link:hover {
+            gap: 0.75rem;
         }
 
-        .pub-link svg {
-            width: 14px;
-            height: 14px;
-        }
-
-        /* Resources */
-        .resource-grid {
+        /* News Section */
+        .news-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 1rem;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
         }
 
-        .resource-card {
-            background: var(--bg-card);
-            padding: 1.25rem;
-            border-radius: var(--radius);
+        .news-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 2rem;
             box-shadow: var(--shadow);
-            transition: all var(--transition);
-            display: flex;
-            align-items: flex-start;
-            gap: 1rem;
+            border-left: 4px solid var(--accent);
         }
 
-        .resource-card:hover {
-            box-shadow: var(--shadow-hover);
-            transform: translateY(-2px);
-        }
-
-        .resource-icon {
-            width: 48px;
-            height: 48px;
-            background: #FEE2E2;
-            border-radius: var(--radius);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-
-        .resource-icon.pdf {
-            background: #FEE2E2;
-            color: #DC2626;
-        }
-
-        .resource-icon.zip {
-            background: #FEF3C7;
-            color: #D97706;
-        }
-
-        .resource-icon.default {
-            background: #E0E7FF;
+        .news-date {
             color: var(--accent);
-        }
-
-        .resource-icon svg {
-            width: 24px;
-            height: 24px;
-        }
-
-        .resource-content {
-            flex: 1;
-            min-width: 0;
-        }
-
-        .resource-name {
-            font-weight: 600;
-            color: var(--primary-text);
-            margin-bottom: 0.25rem;
-            word-break: break-word;
-        }
-
-        .resource-desc {
             font-size: 0.85rem;
-            color: var(--secondary-text);
+            font-weight: 600;
             margin-bottom: 0.5rem;
         }
 
-        .resource-meta {
-            font-size: 0.8rem;
-            color: #9CA3AF;
+        .news-card h3 {
+            font-size: 1.15rem;
+            color: var(--primary);
+            margin-bottom: 0.75rem;
         }
 
-        .resource-download {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.35rem;
-            color: var(--accent);
-            text-decoration: none;
-            font-size: 0.85rem;
-            font-weight: 500;
-            transition: color var(--transition);
-        }
-
-        .resource-download:hover {
-            color: var(--accent-hover);
-        }
-
-        .resource-download svg {
-            width: 14px;
-            height: 14px;
-        }
-
-        /* Contact */
-        .contact-content {
-            background: var(--bg-card);
-            padding: 2rem;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1rem;
-        }
-
-        .contact-item:last-child {
-            margin-bottom: 0;
-        }
-
-        .contact-icon {
-            width: 40px;
-            height: 40px;
-            background: #EFF6FF;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-
-        .contact-icon svg {
-            width: 20px;
-            height: 20px;
-            color: var(--accent);
-        }
-
-        .contact-label {
-            font-weight: 500;
-            color: var(--secondary-text);
-            font-size: 0.9rem;
-            margin-bottom: 0.15rem;
-        }
-
-        .contact-value {
-            color: var(--primary-text);
-            text-decoration: none;
-            transition: color var(--transition);
-        }
-
-        .contact-value:hover {
-            color: var(--accent);
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1.5rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid var(--border);
-        }
-
-        .social-link {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.5rem 1rem;
-            background: #F3F4F6;
-            color: var(--secondary-text);
-            text-decoration: none;
-            border-radius: var(--radius);
-            font-size: 0.9rem;
-            transition: all var(--transition);
-        }
-
-        .social-link:hover {
-            background: var(--accent);
-            color: white;
-        }
-
-        .social-link svg {
-            width: 18px;
-            height: 18px;
+        .news-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
         }
 
         /* Footer */
         footer {
-            background: var(--bg-card);
-            border-top: 1px solid var(--border);
-            padding: 2rem 1.5rem;
+            background: var(--primary);
+            color: white;
+            padding: 3rem 2rem;
             text-align: center;
         }
 
         .footer-content {
-            max-width: 900px;
+            max-width: 1200px;
             margin: 0 auto;
         }
 
-        .footer-text {
-            color: var(--secondary-text);
-            font-size: 0.9rem;
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
         }
 
-        .footer-updated {
-            color: #9CA3AF;
-            font-size: 0.8rem;
-            margin-top: 0.5rem;
+        .footer-text {
+            opacity: 0.8;
+            font-size: 0.9rem;
         }
 
         /* Mobile Responsive */
         @media (max-width: 768px) {
-            .menu-toggle {
-                display: flex;
+            .nav-container {
+                flex-direction: column;
+                height: auto;
+                padding: 1rem 0;
+                gap: 1rem;
             }
 
             .nav-links {
-                display: none;
-                position: absolute;
-                top: 60px;
-                left: 0;
-                right: 0;
-                background: var(--bg-card);
-                flex-direction: column;
-                padding: 1rem 1.5rem;
-                gap: 1rem;
-                border-bottom: 1px solid var(--border);
-                box-shadow: var(--shadow);
+                gap: 1.5rem;
             }
 
-            .nav-links.active {
-                display: flex;
-            }
-
-            .hero {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .hero-avatar {
-                margin: 0 auto;
-                width: 160px;
-                height: 160px;
-            }
-
-            .hero-tags {
-                justify-content: center;
-            }
-
-            h1 {
+            .hero h1 {
                 font-size: 2rem;
             }
 
-            h2 {
-                font-size: 1.5rem;
+            .hero p {
+                font-size: 1rem;
             }
 
-            .pub-links {
-                flex-direction: column;
-            }
-
-            .pub-link {
-                justify-content: center;
-            }
-
-            .resource-grid {
+            .about-grid {
                 grid-template-columns: 1fr;
             }
 
-            .social-links {
-                flex-direction: column;
+            .about-stats {
+                grid-template-columns: 1fr;
             }
 
-            .social-link {
-                justify-content: center;
+            .research-grid {
+                grid-template-columns: 1fr;
             }
-        }
 
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
+            .news-grid {
+                grid-template-columns: 1fr;
             }
         }
-
-        .fade-in {
-            animation: fadeInUp 0.6s ease forwards;
-        }
-
-        .delay-1 { animation-delay: 0.1s; }
-        .delay-2 { animation-delay: 0.2s; }
-        .delay-3 { animation-delay: 0.3s; }
-        .delay-4 { animation-delay: 0.4s; }
     </style>
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="navbar">
+    <nav>
         <div class="nav-container">
-            <a href="#" class="nav-logo">张三</a>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="#about">首页</a></li>
-                <li><a href="#publications">论文</a></li>
-                <li><a href="#resources">资源</a></li>
-                <li><a href="#contact">联系</a></li>
+            <a href="index.html" class="logo">
+                <div class="logo-icon">ZISM</div>
+                <div class="logo-text">
+                    Zhengzhou Institute of
+                    <span>Surveying and Mapping</span>
+                </div>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="research.html">Research</a></li>
+                <li><a href="personal.html">Personal</a></li>
             </ul>
-            <div class="menu-toggle" id="menuToggle" aria-label="菜单">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
         </div>
     </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Zhengzhou Institute of Surveying and Mapping</h1>
+            <p>Advancing geospatial science and spatial-temporal reference technologies for a better understanding of our world</p>
+        </div>
+    </section>
 
     <!-- Main Content -->
     <main>
         <!-- About Section -->
         <section id="about">
-            <div class="hero fade-in">
-                <div class="hero-avatar">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
-                    </svg>
+            <h2 class="section-title">About Our Team</h2>
+            <div class="about-grid">
+                <div class="about-text">
+                    <p>This is a branch of Zhengzhou Institute of Surveying and Mapping, which is a leading research team dedicated to advancing the frontiers of geospatial science, positioning technology, and spatial-temporal reference systems.</p>
+                    <p>Our team focus on addressing critical challenges in Earth-Moon space exploration, Very Long Baseline Interferometry (VLBI), and spatial-temporal reference frameworks. We are committed to excellence in research, education, and technological innovation.</p>
+                    <p>Through collaborative partnerships with international research institutions and industry leaders, we continue to contribute significantly to the advancement of surveying and mapping sciences.</p>
                 </div>
-                <div class="hero-content">
-                    <h1 class="hero-title">张三</h1>
-                    <p class="hero-subtitle">助理教授 · 清华大学计算机科学与技术系</p>
-                    <div class="hero-tags">
-                        <span class="tag">机器学习</span>
-                        <span class="tag">计算机视觉</span>
-                        <span class="tag">深度学习</span>
+                <div class="about-stats">
+                    <div class="stat-card">
+                        <span class="stat-number">+</span>
+                        <span class="stat-label">Research Scientists</span>
                     </div>
-                    <p class="hero-bio">
-                        我是清华大学计算机科学与技术系的助理教授。我的研究兴趣主要集中在机器学习、计算机视觉和深度学习领域。我致力于开发更加高效、可解释的AI模型，并探索其在实际应用中的潜力。目前，我正在招收博士研究生和博士后研究人员，欢迎具有相关背景的优秀学生加入我的研究团队。
-                    </p>
-                    <a href="#" class="btn btn-primary">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                        </svg>
-                        下载简历
-                    </a>
+                    <div class="stat-card">
+                        <span class="stat-number">+</span>
+                        <span class="stat-label">Publications</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">+</span>
+                        <span class="stat-label">Research Projects</span>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Publications Section -->
-        <section id="publications">
-            <h2 class="fade-in delay-1">学术论文</h2>
-            <div class="publication-list">
-                <div class="publication-item fade-in delay-2">
-                    <a href="https://doi.org/10.1000/xyz123" class="pub-title" target="_blank" rel="noopener">
-                        基于自监督学习的图像表示学习方法
-                    </a>
-                    <p class="pub-authors">
-                        <strong>张三</strong>， 李四， 王五， 陈六
-                    </p>
-                    <p class="pub-venue">
-                        IEEE Transactions on Pattern Analysis and Machine Intelligence, 2024
-                    </p>
-                    <div class="pub-links">
-                        <a href="/files/paper1.pdf" class="pub-link" target="_blank" rel="noopener">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+        <!-- Research Areas -->
+        <section id="research">
+            <h2 class="section-title">Research Areas</h2>
+            <div class="research-grid">
+                <div class="research-card">
+                    <div class="research-icon space">
+                        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                        </svg>
+                    </div>
+                    <div class="research-content">
+                        <h3>Earth-Moon Space</h3>
+                        <p>Research on lunar exploration, Earth-Moon coordination systems, and space geodetic techniques for deep space missions.</p>
+                        <a href="research.html#earth-moon" class="research-link">
+                            Learn More
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
                             </svg>
-                            PDF
-                        </a>
-                        <a href="https://github.com/example/project" class="pub-link" target="_blank" rel="noopener">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-                            </svg>
-                            代码
-                        </a>
-                        <a href="https://doi.org/10.1000/xyz123" class="pub-link" target="_blank" rel="noopener">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
-                            </svg>
-                            DOI
                         </a>
                     </div>
                 </div>
 
-                <div class="publication-item fade-in delay-3">
-                    <a href="https://doi.org/10.1000/xyz456" class="pub-title" target="_blank" rel="noopener">
-                        面向小样本学习的跨域迁移方法研究
-                    </a>
-                    <p class="pub-authors">
-                        <strong>张三</strong>， 赵七， 孙八
-                    </p>
-                    <p class="pub-venue">
-                        Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR), 2023
-                    </p>
-                    <div class="pub-links">
-                        <a href="/files/paper2.pdf" class="pub-link" target="_blank" rel="noopener">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                <div class="research-card">
+                    <div class="research-icon vlbi">
+                        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/>
+                            <path d="M2 12h20"/>
+                        </svg>
+                    </div>
+                    <div class="research-content">
+                        <h3>VLBI</h3>
+                        <p>Very Long Baseline Interferometry technology for ultra-high resolution astronomical observations and precise geodesy.</p>
+                        <a href="research.html#vlbi" class="research-link">
+                            Learn More
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
                             </svg>
-                            PDF
-                        </a>
-                        <a href="https://github.com/example/project2" class="pub-link" target="_blank" rel="noopener">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-                            </svg>
-                            代码
-                        </a>
-                        <a href="https://doi.org/10.1000/xyz456" class="pub-link" target="_blank" rel="noopener">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
-                            </svg>
-                            DOI
                         </a>
                     </div>
                 </div>
 
-                <div class="publication-item fade-in delay-4">
-                    <a href="https://doi.org/10.1000/xyz789" class="pub-title" target="_blank" rel="noopener">
-                        多模态学习在医学影像分析中的应用
-                    </a>
-                    <p class="pub-authors">
-                        周九， <strong>张三</strong>， 吴十， 郑十一
-                    </p>
-                    <p class="pub-venue">
-                        Medical Image Analysis, 2022
-                    </p>
-                    <div class="pub-links">
-                        <a href="/files/paper3.pdf" class="pub-link" target="_blank" rel="noopener">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                <div class="research-card">
+                    <div class="research-icon reference">
+                        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                            <circle cx="12" cy="10" r="3"/>
+                        </svg>
+                    </div>
+                    <div class="research-content">
+                        <h3>Spatial-Temporal Reference</h3>
+                        <p>Development of high-precision coordinate systems, time synchronization, and reference frame technologies.</p>
+                        <a href="research.html#reference" class="research-link">
+                            Learn More
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
                             </svg>
-                            PDF
-                        </a>
-                        <a href="#" class="pub-link" onclick="copyBibtex('bibtex1')">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
-                            </svg>
-                            引用
-                        </a>
-                        <a href="https://doi.org/10.1000/xyz789" class="pub-link" target="_blank" rel="noopener">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
-                            </svg>
-                            DOI
                         </a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Resources Section -->
-        <section id="resources">
-            <h2 class="fade-in delay-1">下载资源</h2>
-            <div class="resource-grid">
-                <div class="resource-card fade-in delay-2">
-                    <div class="resource-icon pdf">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
-                        </svg>
-                    </div>
-                    <div class="resource-content">
-                        <div class="resource-name">个人简历</div>
-                        <div class="resource-desc">2024年最新版本，包含教育背景、研究经历和发表论文列表</div>
-                        <div class="resource-meta">PDF · 156 KB</div>
-                        <a href="/files/cv.pdf" class="resource-download" download>
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                            </svg>
-                            下载
-                        </a>
-                    </div>
+        <!-- News Section -->
+        <section id="news">
+            <h2 class="section-title">Latest News</h2>
+            <div class="news-grid">
+                <div class="news-card">
+                    <div class="news-date">January 2024</div>
+                    <h3>New Research Lab Established</h3>
+                    <p>Our institute has launched a new Earth-Moon space research laboratory to advance lunar exploration technologies.</p>
                 </div>
-
-                <div class="resource-card fade-in delay-3">
-                    <div class="resource-icon pdf">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
-                        </svg>
-                    </div>
-                    <div class="resource-content">
-                        <div class="resource-name">研究组介绍</div>
-                        <div class="resource-desc">实验室研究方向、成员介绍和合作机会说明</div>
-                        <div class="resource-meta">PDF · 2.3 MB</div>
-                        <a href="/files/lab-intro.pdf" class="resource-download" download>
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                            </svg>
-                            下载
-                        </a>
-                    </div>
-                </div>
-
-                <div class="resource-card fade-in delay-4">
-                    <div class="resource-icon zip">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
-                        </svg>
-                    </div>
-                    <div class="resource-content">
-                        <div class="resource-name">实验代码包</div>
-                        <div class="resource-desc">论文"基于自监督学习的图像表示学习方法"完整实验代码</div>
-                        <div class="resource-meta">ZIP · 15.8 MB</div>
-                        <a href="/files/code.zip" class="resource-download" download>
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                            </svg>
-                            下载
-                        </a>
-                    </div>
-                </div>
-
-                <div class="resource-card fade-in delay-4">
-                    <div class="resource-icon default">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                        </svg>
-                    </div>
-                    <div class="resource-content">
-                        <div class="resource-name">演讲幻灯片</div>
-                        <div class="resource-desc">在CVPR 2023会议上所做演讲的幻灯片分享</div>
-                        <div class="resource-meta">PPTX · 8.5 MB</div>
-                        <a href="/files/slides.pptx" class="resource-download" download>
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                            </svg>
-                            下载
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section id="contact">
-            <h2 class="fade-in delay-1">联系方式</h2>
-            <div class="contact-content fade-in delay-2">
-                <div class="contact-item">
-                    <div class="contact-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                        </svg>
-                    </div>
-                    <div>
-                        <div class="contact-label">邮箱</div>
-                        <a href="mailto:zhangsan@tsinghua.edu.cn" class="contact-value">zhangsan@tsinghua.edu.cn</a>
-                    </div>
-                </div>
-                <div class="contact-item">
-                    <div class="contact-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                        </svg>
-                    </div>
-                    <div>
-                        <div class="contact-label">办公地址</div>
-                        <div class="contact-value">清华大学FIT楼 4-201室</div>
-                    </div>
-                </div>
-                <div class="social-links">
-                    <a href="https://scholar.google.com/citations?user=example" class="social-link" target="_blank" rel="noopener">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm5.91-3c-.49 0-.9.36-.98.85C16.52 14.2 14.47 16 12 16s-4.52-1.8-4.93-4.15c-.08-.49-.49-.85-.98-.85-.61 0-1.09.54-1 1.14.49 3 2.89 5.35 5.91 5.78V20c0 .55.45 1 1 1s1-.45 1-1v-2.08c3.02-.43 5.42-2.78 5.91-5.78.1-.6-.39-1.14-1-1.14z"/>
-                        </svg>
-                        Google Scholar
-                    </a>
-                    <a href="https://github.com/example" class="social-link" target="_blank" rel="noopener">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                        </svg>
-                        GitHub
-                    </a>
-                    <a href="https://www.researchgate.net/profile/example" class="social-link" target="_blank" rel="noopener">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm-.5 4.5c.69 0 1.25.56 1.25 1.25S12.19 7 11.5 7s-1.25-.56-1.25-1.25.56-1.25 1.25-1.25zm4.5 12.5h-9v-1.5h9v1.5z"/>
-                        </svg>
-                        ResearchGate
-                    </a>
+                <div class="news-card">
+                    <div class="news-date">December 2023</div>
+                    <h3>International Collaboration</h3>
+                    <p>Signed MOU with international partners for joint VLBI research and data sharing initiatives.</p>
                 </div>
             </div>
         </section>
@@ -928,91 +560,10 @@
     <!-- Footer -->
     <footer>
         <div class="footer-content">
-            <p class="footer-text">&copy; 2024 张三. 保留所有权利.</p>
-            <p class="footer-updated">最后更新: 2024年1月</p>
+            <div class="footer-logo">Zhengzhou Institute of Surveying and Mapping</div>
+            <p class="footer-text">&copy; 2024 Zhengzhou Institute of Surveying and Mapping. All Rights Reserved.</p>
         </div>
     </footer>
-
-    <script>
-        // Mobile Menu Toggle
-        const menuToggle = document.getElementById('menuToggle');
-        const navLinks = document.getElementById('navLinks');
-
-        menuToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
-
-        // Close mobile menu when clicking a link
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-            });
-        });
-
-        // Active nav link on scroll
-        const sections = document.querySelectorAll('section');
-        const navItems = document.querySelectorAll('.nav-links a');
-
-        window.addEventListener('scroll', () => {
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                if (scrollY >= sectionTop - 100) {
-                    current = section.getAttribute('id');
-                }
-            });
-
-            navItems.forEach(item => {
-                item.style.color = '';
-                if (item.getAttribute('href') === `#${current}`) {
-                    item.style.color = 'var(--accent)';
-                }
-            });
-        });
-
-        // Copy BibTeX function
-        function copyBibtex(id) {
-            const bibtexData = {
-                bibtex1: `@article{zhang2024selfsupervised,
-  title={基于自监督学习的图像表示学习方法},
-  author={张三, 李四, 王五, 陈六},
-  journal={IEEE Transactions on Pattern Analysis and Machine Intelligence},
-  year={2024}
-}`,
-                bibtex2: `@inproceedings{zhang2023fewshot,
-  title={面向小样本学习的跨域迁移方法研究},
-  author={张三, 赵七, 孙八},
-  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
-  year={2023}
-}`
-            };
-
-            const text = bibtexData[id] || '';
-            navigator.clipboard.writeText(text).then(() => {
-                alert('BibTeX已复制到剪贴板');
-            }).catch(err => {
-                console.error('复制失败:', err);
-            });
-        }
-
-        // Smooth scroll for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                const href = this.getAttribute('href');
-                if (href !== '#') {
-                    e.preventDefault();
-                    const target = document.querySelector(href);
-                    if (target) {
-                        target.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
-                    }
-                }
-            });
-        });
-    </script>
 
 <style>
 
